@@ -16,14 +16,21 @@ func cap(word string) string {
 	return strings.Title(strings.ToLower(word))
 }
 
-func TitleCase(s string) string {
-	w := strings.Fields(S)
+func Snake(text string) string {
+	text = strings.ToLower(text)
+	result := ""
 
-	for i, j := range w {
-		if len(j) > 3 {
-			w[i] = strings.ToUpper(j)[:1] + strings.ToLower(j[1:])
+	for i := 0; i < len(text); i++ {
+		char := text[i]
+
+		if char >= 'a' && char <= 'z' || char >= '0' && char <= '9' {
+			result += string(char)
+		} else if char == ' ' {
+			result += "_"
 		}
 	}
+
+	return result
 }
 
 func Reverse(word string) string {
@@ -46,4 +53,6 @@ func main() {
 	fmt.Println(cap("director adaeze okonkwo"))
 	fmt.Println(cap("THREAT LEVEL elevated"))
 	fmt.Println(Reverse("Lagos Nigeria"))
+	fmt.Println(Snake("Operation Gopher Protocol"))
+	fmt.Println(Snake("Alert! Level 5 detected"))
 }
